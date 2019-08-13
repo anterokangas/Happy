@@ -32,19 +32,3 @@ const mapStateToProps = (state) => {
 } 
 
 export default withRouter(connect(mapStateToProps)(App));  // JÄRJESTYS NÄIN!
-
-// function App() {
-//   return (
-//     <div className="App" style={{"backgroundColor": "darkgrey", height: "100%"}}>
-//       <HappyBar />
-//       <hr style={{height: "1px solid"}} />
-//       <Title />
-//       <hr style={{height: "1px solid"}} />
-//       <TaskBar />
-//       <hr style={{height: "1px solid"}} />
-//       <WorkBench />
-//     </div>
-//   );
-// }
-
-// export default App;
