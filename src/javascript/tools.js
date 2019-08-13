@@ -1,3 +1,10 @@
+
+var keyValue = 1000000
+export const uniqueKey = () => {
+    keyValue++
+    return keyValue.toString()
+}
+
 export const getPrice = (text, startingString=":", endingString="€") => {
     /*
      * Return float value between starting and ending strings

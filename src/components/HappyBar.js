@@ -3,6 +3,7 @@ import {Link} from "react-router-dom"
 import {List, Image} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 
+
 class HappyBar extends React.Component {
 
     loginout = (event) => {
@@ -14,8 +15,30 @@ class HappyBar extends React.Component {
     }
 
     render() {
-        console.log("HappyBar isLogged="+this.props.isLogged)
+        console.log("HappyBar isLogged=" + this.props.isLogged)
         let loginLogout = this.props.isLogged ? "Logout" : "Login"
+        let logger = (
+            <List.Item>
+                <Link to="/login"
+                    onClick={this.loginout}
+                    id="loginout"
+                >{loginLogout}
+                </Link>
+            </List.Item>
+        )  
+        let signupper = ""
+        if (!this.props.isLogged) {
+            signupper = (    
+                <List.Item>
+                    <Link to="/signup">
+                    <span style={{border: "1px solid", 
+                                "borderRadius": "5px"}}>&nbsp; Sign Up Free &nbsp;
+                    </span>
+                    </Link>
+                </List.Item>
+            )
+        }
+        console.log("loginLogout "+loginLogout+":"+logger)
         let happybar = 
             <List horizontal
                   style={{
@@ -33,15 +56,12 @@ class HappyBar extends React.Component {
                          
                 <List.Item>
                     <List.Content floated="right">
-                        <List horizontal>
-                            <List.Item><Link to="/help">Help</Link></List.Item>
-                            <List.Item><Link to="/login"
-                                             onClick={this.loginout}
-                                             id="loginout"
-                            >{loginLogout}</Link></List.Item>
-                            <List.Item><Link to="/signup">
-                                <span style={{border: "1px solid", 
-                                              "borderRadius": "5px"}}>&nbsp; Sign Up Free &nbsp;</span></Link></List.Item>
+                        <List horizontal >
+                            <List.Item>
+                                <Link to="/help">Help</Link>
+                            </List.Item>
+                            {logger}
+                            {signupper}
                         </List>
                     </List.Content>
                 </List.Item>

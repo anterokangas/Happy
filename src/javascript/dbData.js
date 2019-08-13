@@ -32,7 +32,7 @@ export const happenings = {
     },
     
     "Rieväkylän Rimppa": {
-        "title": "Rieväkylän Rimppa - SKY:n kesajuhla 2015",
+        "title": "Rieväkylän Rimppa - SKY:n kesäjuhla 2015",
         "description": "SKY:n ja KTNL:n kesäjuhla Tampereella 2015 - Osallistujan ilmoittautuminen", 
         "subtotal": "Välisumma",
         "total": "Kaikki yhteensä",

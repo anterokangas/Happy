@@ -33,6 +33,14 @@ const happyReducer = (state=initialize, action) => {
     let tempTask = ""
 
     switch (action.type) {
+        case "SAVE_USERREGISTRATION_DATA":
+            console.log("\n\n")
+            console.log("USER REGISTRATION DATA:")
+            console.log("=======================")
+            console.log("\nstate="+JSON.stringify(state))
+            console.log("\naction="+JSON.stringify(action))
+            tempState = {...state}
+            break
         case "HAPPENING_SELECTED":
             if (action.theHappening === "") {
                 tempTask = "NONE"
@@ -55,7 +63,7 @@ const happyReducer = (state=initialize, action) => {
             break
             // return tempState
         default:
-            tempState = state
+            tempState = {...state}
             break
             // return state
     }
