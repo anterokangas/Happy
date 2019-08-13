@@ -1,0 +1,608 @@
+<htm>
+    <head>
+        <style>
+            .required
+            {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <h1>Rieväkylän Rimppa</h1>
+            <h2>Osallistujan ilmoittautuminen tapahtumaan</h2>
+            <input type="Button" value="Kirjaudu sisään" />
+            <input type="Button" value="Kirjaudu käyttäjäksi" />
+            <br />
+            <p>Sinun täytyy olla kirjautuneena sisään, jos haluat vahvistaa ilmoittautumisesi tai
+                tehdä välitallennuksen. 
+            </p>
+            <p>Varoitus: jos kirjaudut sisään myöhemmin, menetät aiemmin tekemäsi 
+                välitallennuksen tiedot</p>
+            <fieldset>
+                <legend>Henkilötiedot</legend>
+                <div class="form-group">
+                        <label class="control-label" for="Etunimi">Etunimi</label>
+                            <span class="required">*</span>
+                            <br />
+                        <input type="text"
+                                id="Etunimi"
+                                name="data[Etunimi]" 
+                                required="required" 
+                                class="form-control">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="Sukunimi">Sukunimi</label>
+                        <span class="required">*</span>
+                        <br />
+                    <input type="text"
+                           id="Sukunimi"
+                           name="data[Sukunimi]" 
+                           required="required" 
+                           class="form-control" />
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label" for="Puhelin">Puhelin</label>
+                        <span class="required">*</span>
+                        <br />
+                    <input type="text"
+                            id="Puhelin"
+                            name="data[Puhelin]" 
+                            required="required" 
+                            class="form-control" />
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label" for="Sähköposti">Sähköposti</label>
+                        <span class="required">*</span>
+                        <br />       
+                    <input type="email"
+                            id="Sähköposti"
+                            name="data[Sähköposti]" 
+                            required="required" 
+                            class="form-control" />
+                </div>
+            </fieldset>
+            <br />
+            <fieldset>
+                <legend>Ilmoittautumistiedot</legend>
+                <div class="form-group">
+                    <label class="large-label" for="Valitse yhdistys">Valitse yhdistys</label> 
+                    <span class="required">*</span>
+                        <br />
+                    <select name="yhdistys" required>
+                        <option value=""></option>
+                        <option value="Ahjolan Tanhuajat">Ahjolan Tanhuajat</option>
+                        <option value="Nokian Kansantanssin Ystävät">Nokian Kansantanssin Ystävät</option>
+                        <option value="Helsingin Pitäjän Tanhuujat">Helsingin Pitäjän Tanhuujat</option>
+                        <option value="Tampereen Työväenopiston Tanhuajat">Tampereen Työväenopiston Tanhuajat</option>
+                    </select>    
+                    <span>Jos yhdistystäsi ei löydy, pyydä ryhmäsi vetäjää luomaan sellainen</span>
+                    <br>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label class="large-label" for="Valitse ryhmä">Valitse ryhmä</label> 
+                    <span class="required">*</span>      
+                    <br />
+                    <select>
+                        <option value=""></option>
+                        <option value="Maanantai">Maanantai</option>
+                        <option value="Tiistai">Tiistai</option>
+                        <option value="Torstai">Torstai</option>
+                        <option value="Seniorit">Seniorit</option>
+                    </select> 
+                    <span>Jos ryhmääsi ei löydy, pyydä ryhmäsi vetäjää luomaan sellainen</span>                       
+                </div>
+                <br />
+                <div class="form-group">
+                    <label class="large-label" for="roolit">Missä rool(e)issa osallistut (valitse ainakin yksi)</label>
+                        <span class="required">*</span>
+                        <br />    
+                    <input type="checkbox" name="roolit" required value="Tanssija">Tanssija<br>
+                    <input type="checkbox" name="roolit" required value="Soittaja">Soittaja<br>
+                    <input type="checkbox" name="roolit" required value="Ohjaaja">Ohjaaja<br>  
+                    <input type="checkbox" name="roolit" required value="Ryhmän yhteyshenkilö">Ryhmän yhteyshenkilö<br>   
+                    <input type="checkbox" name="roolit" required value="Muu">Muu<br>  
+                </div>
+                <br />
+                <div class="form-group">
+                    <label class="large-label" for="Osallistun">Osallistun</label>
+                        <br />    
+                    <input type="checkbox" name="Osallistun" value="Kulkueeseen">Kulkueeseen<br>
+                    <input type="checkbox" name="roolit" value="Kenttäohjelmaan">Kenttäohjelmaan<br>
+                </div>
+                <br />
+                
+                <h4>Osallistumismaksu: <input type="number"
+                                              name="Välisumma"
+                                              id="Osallistumismaksu"
+                                              readonly
+                                              value="80"/> €</h4>
+            </fieldset>
+            <br />
+            <fieldset>
+                <legend>Majoitus</legend>
+            
+                <div class="form-group">
+                    <label class="large-label" for="Valitse majoitustapasi" required>Valitse majoitustapasi</label> 
+                    <span class="required">*</span>      
+                    <br />
+                    <input type="radio" 
+                           name="Valitse majoitustapasi"
+                           value="Koulumajoitus pe/la, la/su: 25 €"
+                           onchange="document.getElementById('Majoitus yhteensä').value=getPrice(this.value);
+                                     document.getElementById('Majoitus yhteensä').onchange()"
+                    >Koulumajoitus pe/la, la/su: 25 €</br>
+                    <input type="radio" 
+                            name="Valitse majoitustapasi"
+                            value="Koulumajoitus la/su: 20 €"
+                            onchange="document.getElementById('Majoitus yhteensä').value=getPrice(this.value);
+                                      document.getElementById('Majoitus yhteensä').onchange()"
+                    >Koulumajoitus la/su: 20 €</br>
+                    <input type="radio" 
+                            name="Valitse majoitustapasi"
+                            value="Matkailuauto- tai matkailuvaunupaikka: 15 €"
+                            onchange="document.getElementById('Majoitus yhteensä').value=getPrice(this.value);
+                                      document.getElementById('Majoitus yhteensä').onchange()"
+                    >Matkailuauto- tai matkailuvaunupaikka: 15 €</br>
+                    <input type="radio" 
+                        name="Valitse majoitustapasi"
+                        value="Järjestän itse majoitukseni: 0 €"
+                        onchange="document.getElementById('Majoitus yhteensä').value=
+                                  getPrice(this.value);"
+                    >Järjestän itse majoitukseni: 0 €</br>
+                    <h4>Majoitus yhteensä <input type="number"
+                                                 id="Majoitus yhteensä"
+                                                 readonly
+                                                 name="Välisumma"
+                                                 value="0"
+                                                 onchange="sumGroupAndTrig(this.name, 'Kaikki yhteensä')"
+                                          /> €</h4>             
+                </div>
+            
+            </fieldset>
+            <br />
+            <fieldset>
+                <legend>Ruokailu</legend>
+                <div class="form-group">
+                    <label class="large-label" for="Valitse ateriasi">Valitse ateriasi</label> 
+                    <br />
+                    <input type="checkbox" name="Valitse ateriasi" value="Pe-iltapala: 5 €" 
+                     onchange="sumGroupAndTrig(this.name, 'Ruokailu yhteensä')">Pe-iltapala: 5 €<br>
+                    <input type="checkbox" name="Valitse ateriasi" value="La-aamupala: 7 €" 
+                     onchange="sumGroupAndTrig(this.name, 'Ruokailu yhteensä')">La-aamupala: 7 €<br>
+                    <input type="checkbox" name="Valitse ateriasi" value="La-lounas: 7 €" 
+                     onchange="sumGroupAndTrig(this.name, 'Ruokailu yhteensä')">La-lounas: 7 €<br>
+                    <input type="checkbox" name="Valitse ateriasi" value="La-päivällinen: 10 €"
+                    onchange="sumGroupAndTrig(this.name, 'Ruokailu yhteensä')">La-päivällinen: 10 €<br>
+                    <input type="checkbox" name="Valitse ateriasi" value="La-iltapala: 5 €"
+                    onchange="sumGroupAndTrig(this.name, 'Ruokailu yhteensä')">La-iltapala: 5 €<br>
+                    <input type="checkbox" name="Valitse ateriasi" value="Su-aamupala: 7 €"
+                    onchange="sumGroupAndTrig(this.name, 'Ruokailu yhteensä')">Su-aamupala: 7 €<br>
+                    <input type="checkbox" name="Valitse ateriasi" value="Su-lounas: 7 €"
+                    onchange="sumGroupAndTrig(this.name, 'Ruokailu yhteensä')">Su-lounas: 7 €<br>
+                </div>
+                
+                <h4>Ruokailu yhteensä <input type="number"
+                                             id="Ruokailu yhteensä"
+                                             readonly
+                                             value="0"
+                                             name="Välisumma"
+                                             onchange="sumGroupAndTrig(this.name, 'Kaikki yhteensä')"
+                                      /> €</h4>
+                <br/>
+                <label class="large-label" for="Valitse erityisruokavaliosi">Valitse erityisruokavaliosi</label> 
+                <br />
+                <input type="checkbox" name="Valitse erityisruokavaliosi" value="Vähälaktoositon">Vähälaktoositon<br>
+                <input type="checkbox" name="Valitse erityisruokavaliosi" value="Maidoton">Maidoton<br>
+                <input type="checkbox" name="Valitse erityisruokavaliosi" value="Vilja-allergia">Vilja-allergia<br>
+                <p>Huom! Erityisruokavaliotietoasi käytetään vain erityisaterioiden tilaamiseksi. 
+                    Henkilökohtaisia erityisruokavaliotietojasi ei välitetä eteenpäin.</p>
+                <br>
+                <label class="control-label" for="Henkilökohtainen erityisruokavaliosi">Henkilökohtainen erityisruokavaliosi</label> 
+                <br />
+                <textarea name="Henkilökohtainen erityisruokavaliosi"
+                    rows="3" cols="72">
+                </textarea>
+                <p>Huom! Jos ilmoitat henkilökohtaisen ruokavaliosi, niin valitsemiesi ruokailujen yheydessä
+                järjestetään sinulle nimelle varustettu ateria.
+                </p>
+            
+            </fieldset>
+            <br />
+            <fieldset>
+                <legend>Aktiviteetit</legend>
+                <div class="form-group">
+                    <label class="large-label" for="Aktiviteetit">Valitse aktiviteetit</label> 
+                    <br />
+                    <input type="checkbox" name="Aktiviteetit" value="Pe-Pelimannitanssit: 5 €"
+                     onchange="sumGroupAndTrig(this.name, 'Aktiviteetit yhteensä')">Pe-pelimannitanssit: 5 €<br>
+                    <input type="checkbox" name="Aktiviteetit" value="La-Kansantanssikonsertti: 10 €"
+                     onchange="sumGroupAndTrig(this.name, 'Aktiviteetit yhteensä')">La-Kansantanssikonsertti: 10 €<br>
+                    <input type="checkbox" name="Aktiviteetit" value="La-Opastettu puistokierros: 0 €"
+                     onchange="sumGroupAndTrig(this.name, 'Aktiviteetit yhteensä')">La-Opastettu puistokierros: 0 €<br>
+                </div>
+                
+                <h4>Aktiviteetit yhteensä <input type="number"
+                                                 readonly
+                                                 id="Aktiviteetit yhteensä"
+                                                 name="Välisumma"
+                                                 value="0"
+                                                 onchange="sumGroupAndTrig(this.name, 'Kaikki yhteensä')"
+                                                 /> €</h4>
+            </fieldset>
+            <br/>
+            <fieldset>
+                <legend>Ostokset</legend>  
+                <div class="form-group">
+                    <h4>Tapahtumapinssi</h4>
+                    <p id="Tapahtumapinssi Hinta">Kappalehinta: 2 €</p>
+                    <label class="control-label" for="Tapahtumapinssi Lukumäärä">Lukumäärä</label>
+                    <input type="number"
+                           id="Tapahtumapinssi Lukumäärä"
+                           placeholder="0"
+                           class="form-control"
+                           onchange="document.getElementById('Tapahtumapinssit yhteensä').value=multiply(this.id, 'Tapahtumapinssi Hinta');
+                                     document.getElementById('Tapahtumapinssit yhteensä').onchange()"
+                           />
+                           
+                    <label class="control-label" for="Tapahtumapinssit yhteensä">yhteensä</label>
+                    <input type="number"
+                           readonly
+                           id="Tapahtumapinssit yhteensä"
+                           name="Ostokset"
+                           value="0"
+                           onchange="alert('Hi!');sumGroupAndTrig(this.name, 'Ostokset yhteensä')"
+                           /><span> €</span>
+
+                    <br />
+                    <p>
+                    <input type="button" 
+                           onclick="for (product in products) {
+                                        alert(makeProductRow(product))
+                                    }
+                                   "
+                           value="Tyhjä rivi"
+                    />
+                    </p>
+
+<!--
+                    <h4>Naisten T-paita</h4>
+                    <p id="Naisten T-paita Hinta">Kappalehinta: 2 €</p>
+                    <table id="Naisten T-paita">
+                        <th>
+                            <td>Koko</td>
+                            <td>Väri</td>
+                            <td>Lukumäärä</td>
+                            <td>Yhteensä</td>
+                            <td><Button onclick="addBelow(0, 'Naisten T-paita')">+</Button></td>
+                        </th>
+                        <tr>
+
+                        </tr>
+
+
+                    </table>
+-->
+                </div>
+
+                <h4>Ostokset yhteensä <input type="number"
+                    readonly
+                    id="Ostokset yhteensä"
+                    name="Välisumma"
+                    value="0"
+                    onchange="sumGroupAndTrig(this.name, 'Kaikki yhteensä')"
+                    /> €</h4>
+            </fieldset>
+            <h3>Kaikki yhteensä <input type="number" readonly id="Kaikki yhteensä" value="0"/> €</h3>
+            <br/>
+            <input type="button" value="Tallenna lomake" />
+            <input type="reset" value="Tyhjennä lomake" />
+            <input type="button" value="Logout" />
+            <input type="submit" value="Vahvista osallistuminen">
+        </form>
+    </body>
+
+    <script>
+    function getPrice(text, startingString=":", endingString="€") {
+        /*
+         * Return float value between starting and ending strings
+         * Notice: the first ending striung bust be after the last starting string
+         */
+        let start = text.lastIndexOf(startingString) + 1
+        let end = text.indexOf(endingString) - 1
+        if (start > -1 && end > start) {
+            text = text.substring(start, end)
+        }
+        return parseFloat(text.trim())
+    }
+
+    function sumUp(name) {
+        /*
+         * Sum values having name attribute name
+         */
+        let list = document.getElementsByName(name)
+        let sum = 0
+        for (let i=0; i <list.length; i++) {
+            if (list[i].type == "checkbox" && list[i].checked || list[i].type !="checkbox") { 
+                sum += getPrice(list[i].value)
+            }
+        }
+        return sum
+    }
+
+    function sumGroupAndTrig(name, id) {
+        /*
+         * sum values having name attribute name and trig onchange event for element-id id
+         */
+        let sum = sumUp(name)
+        let destination = document.getElementById(id)
+        destination.value = sum
+        destination.onchange()
+    }
+
+    function multiply(numberId, priceId) {
+        /*
+         * count total price (= number times price per piece)
+         */
+        let number = document.getElementById(numberId).value
+        let price = getPrice(document.getElementById(priceId).innerHTML)
+        return number * price
+    }
+    var Happening = {
+        "title": "Rieväkylän Rimppa",
+        "parts": [
+            {"Henkilötiedot": {
+                "products": [
+                    {"name": "Etunimi",
+                     "type": "text",
+                     "required": true},
+                    {"name": "Sukunimi",
+                     "type": "text",
+                     "required": true},
+                    {"name": "Puhelin",
+                     "type": "number",
+                     "required": true},
+                    {"name": "Sähköposti",
+                     "type": "email",
+                     "required": true},
+
+                ]}
+            },
+            {"Ilmoittautumistiedot": {
+                "products": [
+                    {"name": "Valitse yhdistys",
+                     "type": "select",
+                     "required": true,
+                     "properties": [
+                         "Ahjolan Tanhuajat",
+                         "Helsingin Pitäjän Tanhuujat",
+                         "Nokian Kansantanssin Ystävät",
+                         "Tampereen Työväenopiston Tanhuajat",
+                     ],
+                     "comment": "Jos yhdistyksesi ei ole luettelossa, pyydä ryhmäsi vetäjää luomaan sellainen"
+                    },
+                    {"name": "Valitse ryhmä",
+                     "type": "select",
+                     "required": true,
+                     "properties": [
+                         {"Ahjolan Tanhuajat": [
+                             "Maanantai", "Tiistai", "Bygarit"
+                         ],
+                         "Tampereen Työväenopiston Tanhuajat": [
+                             "Maanantai", "Tiistai", "Seniorit", "Torstai"
+                         ],
+                     ],
+                     "comment": "Jos ryhmäsi ei ole luettelossa, pyydä ryhmäsi vetäjää luomaan sellainen"
+                    },
+                    {"name": "Missä rool(e)issa osallistut",
+                     "type": "checkbox",
+                     "required": true,
+                     "properties": [
+                         "Tanssija",
+                         "Soittaja", 
+                         "Ohjaaja", 
+                         "Ryhmän yhteyshenkilö", 
+                         "muu"
+                     ]
+                    },
+                    {"name": "Osallistun",
+                     "type": "checkbox",
+                     "properties": [
+                         "Kulkueeseen",
+                         "Kenttäohjelnmaan"       
+                     ]
+                    },
+                    {"name": "Osallistumismaksu: 80 €",
+                     "type": "text",
+                     "readonly": true
+                    },
+                ]}
+            },
+            {"Majoitus": {
+                "products": [
+                    {"name": "Valitse majoitustapasi",
+                     "type": "radio",
+                     "required": true,
+                     "properties": [
+                         "Koulumajoitus pe/la, la/su: 25 €",
+                         "Koulumajoitus la/su: 20 €",
+                         "Matkailuauto- tai matkailuvaunupaikka: 15 €",
+                         "Järjestän itse majoitukseni: 0 €"
+                     ]}
+                ]}
+            },
+            {"Ruokailu": {
+                "products": [
+                    {"name": "Valitse ateriasi",
+                     "type": "checkbox",
+                     "properties": [
+                         "Pe-iltapala: 5 €",
+                         "La-aamupala: 7 €", 
+                         "La-lounas: 7 €",
+                         "La-päivällinen: 10 €",
+                         "La-iltapala: 5 €",
+                         "Su-aamupala: 7 €",
+                         "Su-lounas: 7 €",
+                     ]
+                    },
+                    {"name": "Valitse erityisruokavaliosi",
+                     "type": "checkbox",
+                     "properties": [                        
+                     "Vähälaktoositon",
+                     "Maidoton",
+                     "Vilja-allergia" ,
+                     ],
+                     "comment": "Huom! Erityisruokavaliotietoasi käytetään vain erityisaterioiden tilaamiseksi. Henkilökohtaisia erityisruokavaliotietojasi ei välitetä eteenpäin."
+                     },
+                     {"name": "Henkilökohtainenerityisruokavaliosi",
+                      "type": "textarea",
+                      "width": 70,
+                      "height": 3,
+                      "comment": "Huom! Jos ilmoitat henkilökohtaisen ruokavaliosi, niin valitsemiesi ruokailujen yheydessä järjestetään sinulle nimelle varustettu ateria."
+
+                      }
+                ]
+            },
+            {"Aktiviteetit": {
+                "products": [
+                    {"name": "Valitse aktiviteetit",
+                     "type": "checkbox",
+                     "properties": [
+                         "Pe-pelimannitanssit: 5 €",
+                         "La-Kansantanssikonsertti: 10 €",
+                         "La-Opastettu puistokierros: 0 €"
+                         ]
+                    }
+                ]}
+            },
+            {"Ostokset": {
+                "products": [       
+                    {"name": "Tapahtumapinssi", 
+                     "type": "number",
+                     "min": 0,
+                     "desc": "Metallia, emalipainatus, halkaisija 2,00 cm, tapahtuman logo ja päivämäärä",
+                     "properties": ["Kappalehinta: 3 €"],
+                    },
+                    {"name": "Naisten T-paita",
+                     "type": "table",
+                     "desc": "Elastaania, pyöreä kaula-aukko, ladyfit, tapahtuman logo hihassa",
+                     "price": 20,
+                     "properties": ["Väri", "Koko"],
+                     "Väri": [
+                         "Punainen", 
+                         "Vihreä", 
+                         "Sininen", 
+                         "Musta", 
+                         "Pinkki", 
+                         "Valkoinen"],
+                     "Koko": ["XS", "S", "M", 
+                              "L", "XL", "XXL", "3XL"
+                     ],
+                    },
+                    {"name": "Suora T-paita",
+                     "type": "table",
+                     "desc": "100 % puuvillaa, pyöreä kaula-aukko, suora unisex-malli, tapahtuman logo hihassa",
+                     "price": 20,
+                     "properties": ["Väri", "Koko"],
+                     "Väri": ["Punainen", "Vihreä", "Sininen", "Musta"],
+                     "Koko": ["S", "M", "L", "XL", "XXL"],
+                }
+            ]}
+        ]
+    }
+    var products = {        
+        "Tapahtumapinssi": {"desc": "Metallia, emalipainatus, halkaisija 2,00 cm, tapahtuman logo ja päivämäärä",
+                            "price": 3,
+                            "properties": [],
+                           },
+        "Naisten T-paita": {"desc": "Elastaania, pyöreä kaula-aukko, ladyfit, tapahtuman logo hihassa",
+                            "price": 20,
+                            "properties": ["Väri", "Koko"],
+                            "Väri": ["Punainen", "Vihreä", "Sininen", "Musta", "Pinkki", "Valkoinen"],
+                            "Koko": ["XS", "S", "M", "L", "XL", "XXL", "3XL"],
+                           },
+        "Suora T-paita": {"desc": "100 % puuvillaa, pyöreä kaula-aukko, suora unisex-malli, tapahtuman logo hihassa",
+                          "price": 20,
+                          "properties": ["Väri", "Koko"],
+                          "Väri": ["Punainen", "Vihreä", "Sininen", "Musta"],
+                          "Koko": ["S", "M", "L", "XL", "XXL"],
+                         }
+        }
+    /*
+    var uniqueValue = 0
+
+    function getUniqueValue(width=10) {
+        let theValue = uniqueValue
+        uniqueValue++
+        return String(theValue).padStart(width, '0')
+    }
+
+    function makeProduct(product) {
+        let productSection = "<"
+
+    }
+
+    function makeProductHeader(product) {
+        let header = "<th>\n"
+    }
+    */
+    function makeProductRow(product) {
+        alert("makeProductRow: product="+product)
+        let theProduct = products[product]
+        let row = ""
+        
+        // selectable properties
+        
+        let name = product + " " + getUniqueValue
+        for (let icell=0; icell < theProduct.properties.length; icell++) {
+            let property = theProduct.properties[icell]
+            let values = theProduct[property]
+            alert("icell=" icell+" property="+property+"values")
+            values.push("")
+            let id = product + " " + property + " " + getUniqueValue
+            row += "<td>\n"
+            row += "<select name=\"" + name + "\" required>\n"
+            for (let ivalue=0; values.length; ivalue++) {
+                row += "<option value=\"" + values[i] + "\">" + values[i] + "</option>\n"
+            }
+            row += "</select>\n"
+            row += "</td>\n"     
+        }
+        return "<tr>/n" + row + "</tr>\n"
+        // number
+        row += "<td>\n"
+        let id = product + " " + number + " " + getUniqueValue
+        row += "<input type=\"number \"\n" +
+               "       id=\"" + id + "\"\n" +
+               "       value=\"0\"\n" +
+               "       min=\"0\"/>\n" 
+        row += "</td>\n"
+        // subprice
+        
+        row += "<td>\n"
+        let id = product + " " + subprice + " " + getUniqueValue
+        row += "<input type=\"number \"\n" +
+               "       id=\"" + id + "\"\n" +
+               "       readonly />\n"
+        row += "</td>\n"
+
+        //add-button
+        row += "<td>\n"
+        let id = product + " " + add + " " + getUniqueValue
+        row += "<button id=\"" + id + "\">+</button\n"
+        row += "</td>\n"
+
+        //add-button
+        row += "<td>\n"
+        id = product + " " + remove + " " + getUniqueValue
+        row += "<button id=\"" + id + "\">-</button\n"
+        row += "</td>\n"
+        row += "</tr>\n"
+        return row
+    }
+*/
+    </script>
+</html>

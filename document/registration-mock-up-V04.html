@@ -1,0 +1,53 @@
+<htm>
+    <head>
+        <style>
+            .required
+            {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <h1>Rf Yhdistys ry</h1>
+            <h2>Osallistujan ilmoittautuminen tapahtumiin</h2>
+            <input type="Button" value="Kirjaudu sisään" />
+            <input type="Button" value="Kirjaudu käyttäjäksi" />
+            <br />
+            <p>Sinun täytyy olla kirjautuneena sisään, jos haluat vahvistaa ilmoittautumisesi tai
+                tehdä välitallennuksen. 
+            </p>
+            <p>Varoitus: jos kirjaudut sisään myöhemmin, menetät aiemmin tekemäsi 
+                välitallennuksen tiedot</p>
+
+                
+            <div id="selectHappenings">
+            </div>
+            <!--
+            <select onchange="html=makeHappening(this.value);
+                              /*alert(html);*/
+                              document.getElementById('happening').innerHTML=html"
+                    required>
+                    <option value="">Valitse tapahtuma</option>
+                    <option value="Rieväkylän Rimppa">Rieväkylän Rimppa 15.-17.2015</option>
+                    <option value="Vuosijuhla">Vuosijuhla 17.3.2018</option>
+                    <option value="Lavatanssikurssi">Lavatanssikurssi 10.10.2018</option>
+            </select>
+            -->
+
+            <div id="happening">
+                <P>Tähän aukeaa lomake</P>
+            </div>
+
+            <input type="button" value="Tallenna lomake" />
+            <input type="reset" value="Tyhjennä lomake" />
+            <input type="button" value="Logout" />
+            <input type="submit" value="Vahvista osallistuminen">
+        </form>
+    </body>
+    <script src="test-data.js"></script>
+    <script src="registration-mock-up-v03.js"></script>
+    <script>
+        document.getElementById("selectHappenings").innerHTML = makeHappenings(happenings, 'happening')
+    </script>
+</html>
